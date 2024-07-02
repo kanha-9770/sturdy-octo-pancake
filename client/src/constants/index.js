@@ -12,13 +12,12 @@ import {
   paperstraw,
   allproduct,
   paperbag1,
-} from "../assets";
-import {
   missionImage,
   companyImage,
   strengthImage,
   pinkCityImage,
-} from "../Assests";
+} from "../assets";
+
 export const items = [
   {
     title: "Sustainability",
@@ -108,98 +107,111 @@ export const links = [
 export const cars = [
   {
     name: "NS-015",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-016",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-017",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-018",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-019",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-020",
-    image: "first",
+    image: "paperCupMachineImage",
     category: "Paper Cup Machine,All Products",
     icon: papercup,
   },
   {
     name: "NS-021",
-    image: "first",
+    image: "paperPlateMachineImage",
     category: "Paper Plate Machine,All Products",
     icon: paperplate2,
   },
   {
     name: "NS-022",
-    image: "first",
+    image: "paperPlateMachineImage",
     category: "Paper Plate Machine,All Products",
     icon: paperplate2,
   },
   {
     name: "Cybertruck",
-    image: "first",
+    image: "paperPlateMachineImage",
+    category: "Paper Plate Machine,All Products",
+    icon: paperplate2,
+  },
+  {
+    name: "Cybertruck2",
+    image: "paperPlateMachineImage",
     category: "Paper Plate Machine,All Products",
     icon: paperplate2,
   },
   {
     name: "a",
-    image: "second",
+    image: "paperBowlMachineImage",
     category: "Paper Bowl Machine,All Products",
     icon: paperbowl,
   },
   {
     name: "b",
-    image: "second",
+    image: "paperBowlMachineImage",
     category: "Paper Bowl Machine,All Products",
     icon: paperbowl,
   },
   {
     name: "c",
-    image: "second",
+    image: "paperBowlMachineImage",
     category: "Paper Bowl Machine,All Products",
     icon: paperbowl,
   },
   {
     name: "d",
-    image: "second",
+    image: "paperBowlMachineImage",
     category: "Paper Bowl Machine,All Products",
     icon: paperbowl,
   },
 
   {
-    name: "Help Me Choose",
-    image: "second",
-    category: "Paper Lid Machine,All Products",
+    name: "Paper Flexo Machine",
+    image: "paperFlexoMachineImage",
+    category: "Paper Flexo Machine,All Products",
     icon: paperlid,
   },
   {
-    name: "a",
-    image: "second",
+    name: "Paper Bag Machine",
+    image: "paperBagMachineImage",
     category: "Paper Bag Machine,All Products",
     icon: paperbag1,
   },
   {
-    name: "b",
-    image: "second",
+    name: "Paper Bag Machine new",
+    image: "fullyAutomaticBagMachineImage",
+    category: "Paper Bag Machine,All Products",
+    icon: paperbag1,
+  },
+
+  {
+    name: "Paper Straw Machine",
+    image: "paperStrawMachine",
     category: "Paper Straw Machine,All Products",
     icon: paperstraw,
   },
@@ -229,8 +241,8 @@ export const SidebarLinks = [
     icon: paperbowl,
   },
   {
-    name: "Paper Lid Machine",
-    link: "/Paper Lid Machine",
+    name: "Paper Flexo Machine",
+    link: "/Paper Flexo Machine",
     icon: paperlid,
   },
   {

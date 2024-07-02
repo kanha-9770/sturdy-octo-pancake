@@ -3,16 +3,17 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
 import { cars, SidebarLinks } from '../../constants';
 import {
   first,
-  second,
-  i1,
-  i2,
-  i3,
-  i4,
-  i5,
-  i6,
-  i7,
-  i8,
+  second
 } from '../../Assests';
+import {
+  paperBowlMachineImage,
+  paperBagMachineImage,
+  paperCupMachineImage,
+  paperPlateMachineImage,
+  paperFlexoMachineImage,
+  fullyAutomaticBagMachineImage,
+  paperStrawMachine,
+} from "../../assets";
 import BlobAnimation from '../Blobanimation';
 import { gsap } from 'gsap';
 import slideInAnimation from './SlideAnimation';
@@ -25,14 +26,13 @@ const AboutLayOut = ({ hoveredItem, setHoveredItem, open, heading, setHeading, i
   const images = {
     first,
     second,
-    i1,
-    i2,
-    i3,
-    i4,
-    i5,
-    i6,
-    i7,
-    i8,
+    paperBowlMachineImage,
+    paperBagMachineImage,
+    paperCupMachineImage,
+    paperPlateMachineImage,
+    paperFlexoMachineImage,
+    fullyAutomaticBagMachineImage,
+    paperStrawMachine
   };
   const filteredCars = cars
     .filter((car) => car.category.includes(hoveredCategory))
@@ -124,7 +124,7 @@ const AboutLayOut = ({ hoveredItem, setHoveredItem, open, heading, setHeading, i
                 <img
                   src={car.image}
                   alt={car.name}
-                  className="w-golden-w bg-transparent h-golden-h object-cover rounded-lg relative z-10"
+                  className="w-full bg-transparent h-golden-h object-contain rounded-lg relative z-10"
                 />
                 <h3 className="text-lg text-black font-bold mt-2 relative z-20">{car.name}</h3>
                 <div className="flex justify-center space-x-4 mt-2">

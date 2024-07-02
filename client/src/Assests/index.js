@@ -18,10 +18,6 @@ import myimageJpg from './myimage.jpg';
 import myimageWebp from './myimage.jpg';
 import straw from './straw.jpg';
 import whitedots from './whitedots.svg';
-import missionImage from '../Asset/mission_v1.png';
-import companyImage from '../Asset/company_v1.png';
-import strengthImage from '../Asset/strength_v1.png';
-import pinkCityImage from '../Asset/pinkCity_v1.png';
 import first from './first.webp';
 import second from './bg3.jpg';
 import i1 from '../Asset/NS-015_v1.jpeg';
@@ -54,10 +50,6 @@ export {
   myimageWebp,
   straw,
   whitedots,
-  missionImage,
-  companyImage,
-  strengthImage,
-  pinkCityImage,
   second,
   i1,
   i2,

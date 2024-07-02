@@ -3,25 +3,21 @@ import { gsap } from 'gsap';
 import { IoIosArrowDown, IoIosArrowUp } from '../index';
 import { items, titlesWithImages } from '../../constants';
 import "../../App.css";
-import slideInAnimation from './SlideAnimation'; // Import the common animation function
-
-const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible }) => {
+import slideInAnimation from './SlideAnimationLeft';
+const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, show }) => {
     const carouselRef = useRef(null);
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const scrollDown = () => {
         if (currentIndex < items.length - 2) {
             setCurrentIndex(currentIndex + 1);
         }
     };
-
     const scrollUp = () => {
         if (currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
         }
     };
-
     const handleWheel = (e) => {
         if (e.deltaY > 0) {
             scrollDown();
@@ -29,7 +25,6 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
             scrollUp();
         }
     };
-
     const handleMouseLeave = (e) => {
         const container = containerRef.current;
         const rect = container.getBoundingClientRect();
@@ -42,18 +37,18 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
                     setCurrentIndex(0);
                     setHeading(null);
                     setIsVisible(true);
+                    setShow(false);
                     gsap.to(container, { opacity: 1 });
                 }
             });
         }
     };
-
     useEffect(() => {
         const containerElement = containerRef.current;
-        if (containerElement) {
-            slideInAnimation(containerElement); // Apply the animation
-            containerElement.addEventListener('mouseleave', handleMouseLeave);
+        if (containerElement && show) {
+            slideInAnimation(containerElement);
         }
+        containerElement.addEventListener('mouseleave', handleMouseLeave);
         return () => {
             if (containerElement) {
                 containerElement.removeEventListener('mouseleave', handleMouseLeave);
@@ -69,9 +64,7 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
             { y: '100%', scale: 0.5, opacity: 0 },
             { y: '0%', scale: 1, opacity: 1, duration: 0.5, stagger: 0.05, ease: 'elastic.out(1, 0.5)' }
         );
-
         carouselElement.addEventListener('wheel', handleWheel);
-
         return () => {
             carouselElement.removeEventListener('wheel', handleWheel);
         };

@@ -8,17 +8,17 @@ import gsap from "gsap";
 
 const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible }) => {
     const animateref = useRef(null);
-    const menuDropRef = useRef(null);
     const listItemRefs = useRef([]);
-
+    const [show, setShow] = useState(false);
     useEffect(() => {
         if (hoveredItem) {
             if (isVisible) {
                 gsap.fromTo(
                     animateref.current,
                     { y: '-20%', opacity: 0 },
-                    { y: '0%', opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
+                    { y: '0%', opacity: 1, duration: 2, ease: 'power3.out', delay: 0.1 }
                 );
+                setShow(true);
                 setIsVisible(false);
             }
         } else {
@@ -26,52 +26,6 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
         }
     }, [hoveredItem]);
 
-    useEffect(() => {
-        const handleMouseEnter = (e, index) => {
-            const menuDrop = menuDropRef.current;
-            const item = listItemRefs.current[index];
-
-            menuDrop.style.setProperty("--block-top", `${item.getBoundingClientRect().top}px`);
-            menuDrop.style.setProperty("--block-left", `${item.getBoundingClientRect().left}px`);
-            menuDrop.style.setProperty("--block-height", `${item.clientHeight}px`);
-            menuDrop.style.setProperty("--block-width", `${item.clientWidth}px`);
-            menuDrop.style.setProperty("opacity", "1");
-            menuDrop.style.setProperty("visibility", "visible");
-
-            gsap.to(menuDrop, {
-                duration: 0.5,
-                ease: 'power3.out',
-                left: item.getBoundingClientRect().left,
-                top: item.getBoundingClientRect().top,
-                width: item.clientWidth,
-                height: item.clientHeight,
-                backgroundColor: 'black',
-                color: 'white'
-            });
-        };
-
-        const handleMouseLeave = () => {
-            const menuDrop = menuDropRef.current;
-            gsap.to(menuDrop, {
-                duration: 0.5,
-                ease: 'power3.out',
-                opacity: 0,
-                visibility: 'hidden'
-            });
-        };
-
-        listItemRefs.current.forEach((item, index) => {
-            item.addEventListener('mouseenter', (e) => handleMouseEnter(e, index));
-            item.addEventListener('mouseleave', handleMouseLeave);
-        });
-
-        return () => {
-            listItemRefs.current.forEach((item) => {
-                item.removeEventListener('mouseenter', handleMouseEnter);
-                item.removeEventListener('mouseleave', handleMouseLeave);
-            });
-        };
-    }, []);
 
     const handleMouseEnternew = (linkName) => {
         setHeading(linkName);
@@ -100,7 +54,7 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                         >
                             <p
                                 ref={el => listItemRefs.current[index] = el}
-                                className={`flex item-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
+                                className={`flex menuDrop item-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
                                     ? heading === link.name
                                         ? "bg-black text-white rounded-full"
                                         : "text-black"
@@ -128,6 +82,8 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                         setHeading={setHeading}
                                         isVisible={isVisible}
                                         setIsVisible={setIsVisible}
+                                        show={show}
+                                        setShow={setShow}
                                     />
                                 )}
                                 {link.name === "Products" && <Banners

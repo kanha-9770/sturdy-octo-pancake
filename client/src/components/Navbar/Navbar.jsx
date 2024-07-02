@@ -108,9 +108,8 @@ const ProfilePage = () => {
     );
 };
 
-const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, setIsVisible }) => {
+const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, setIsVisible,show,setShow }) => {
     const [open, setOpen] = useState(false);
-
     const [profileOpen, setProfileOpen] = useState(false);
     const [isContactFormVisible, setContactFormVisible] = useState(false);
 
