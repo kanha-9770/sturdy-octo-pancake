@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat"],
+        montserrat: ["Montserrat", "sans-serif"], // Add "sans-serif" as fallback
       },
       fontSize: {
         16: "16px",
@@ -20,6 +20,17 @@ export default {
         "800px": "800px",
         "1300px": "1300px",
         "400px": "400px",
+      },
+      fontWeight: {
+        thin: 100,
+        extralight: 200,
+        light: 300,
+        normal: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+        extrabold: 800,
+        black: 900,
       },
     },
   },

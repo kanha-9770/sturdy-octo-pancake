@@ -16,8 +16,14 @@ import {
   companyImage,
   strengthImage,
   pinkCityImage,
+  paperBowlMachineImage,
+  paperBagMachineImage,
+  paperCupMachineImage,
+  paperPlateMachineImage,
+  paperFlexoMachineImage,
+  fullyAutomaticBagMachineImage,
+  paperStrawMachine,
 } from "../assets";
-
 export const items = [
   {
     title: "Sustainability",
@@ -59,52 +65,61 @@ export const links = [
   {
     name: "AboutUs",
     comp: "AboutUs",
-    submenu: false,
-    sublinks: [],
   },
   {
     name: "Products",
-    submenu: false,
-    sublinks: [],
   },
   {
     name: "Application",
-    submenu: false,
-    sublinks: [],
   },
   {
     name: "Solutions",
-    submenu: false,
-    sublinks: [],
   },
   {
     name: "Mediaroom",
-    submenu: false,
-    sublinks: [],
   },
   {
     name: "Other",
-    submenu: false,
-    sublinks: [],
   },
-  // {
-  //   name: "Other2",
-  //   submenu: false,
-  //   sublinks: [],
-  // },
-  // {
-  //   name: "Other3",
-  //   submenu: false,
-  //   sublinks: [],
-  // },
-  // {
-  //   name: "Other4",
-  //   submenu: false,
-  //   sublinks: [],
-  // },
 ];
+// images for about us
+export const images = {
+  paperBowlMachineImage,
+  paperBagMachineImage,
+  paperCupMachineImage,
+  paperPlateMachineImage,
+  paperFlexoMachineImage,
+  fullyAutomaticBagMachineImage,
+  paperStrawMachine,
+};
+
 // items for banners.jsx
-export const cars = [
+export const Machines = [
+  {
+    name: "Paper Bowl Machine 01",
+    image: "paperBowlMachineImage",
+    category: "Paper Bowl Machine,All Products",
+    icon: paperbowl,
+  },
+  {
+    name: "Paper Bowl Machine 02",
+    image: "paperBowlMachineImage",
+    category: "Paper Bowl Machine,All Products",
+    icon: paperbowl,
+  },
+  {
+    name: "Paper Bowl Machine 03",
+    image: "paperBowlMachineImage",
+    category: "Paper Bowl Machine,All Products",
+    icon: paperbowl,
+  },
+  {
+    name: "Paper Bowl Machine 04",
+    image: "paperBowlMachineImage",
+    category: "Paper Bowl Machine,All Products",
+    icon: paperbowl,
+  },
+
   {
     name: "NS-015",
     image: "paperCupMachineImage",
@@ -165,30 +180,7 @@ export const cars = [
     category: "Paper Plate Machine,All Products",
     icon: paperplate2,
   },
-  {
-    name: "a",
-    image: "paperBowlMachineImage",
-    category: "Paper Bowl Machine,All Products",
-    icon: paperbowl,
-  },
-  {
-    name: "b",
-    image: "paperBowlMachineImage",
-    category: "Paper Bowl Machine,All Products",
-    icon: paperbowl,
-  },
-  {
-    name: "c",
-    image: "paperBowlMachineImage",
-    category: "Paper Bowl Machine,All Products",
-    icon: paperbowl,
-  },
-  {
-    name: "d",
-    image: "paperBowlMachineImage",
-    category: "Paper Bowl Machine,All Products",
-    icon: paperbowl,
-  },
+  
 
   {
     name: "Paper Flexo Machine",
@@ -223,6 +215,11 @@ export const SidebarLinks = [
     link: "/all",
     icon: allproduct,
   },
+  {
+    name: "Paper Bowl Machine",
+    link: "/used-Machine",
+    icon: paperbowl,
+  },
 
   {
     name: "Paper Cup Machine",
@@ -235,11 +232,7 @@ export const SidebarLinks = [
     link: "/demo-drive",
     icon: paperplate2,
   },
-  {
-    name: "Paper Bowl Machine",
-    link: "/used-cars",
-    icon: paperbowl,
-  },
+
   {
     name: "Paper Flexo Machine",
     link: "/Paper Flexo Machine",
@@ -252,6 +245,11 @@ export const SidebarLinks = [
   },
   {
     name: "Paper Straw Machine",
+    link: "/help-me-charge",
+    icon: paperstraw,
+  },
+  {
+    name: "Paper Lunch Box Machine",
     link: "/help-me-charge",
     icon: paperstraw,
   },

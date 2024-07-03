@@ -8,21 +8,6 @@
   @apply bg-red-600 rounded-md p-1 px-6 text-white font-montserrat font-semibold text-16;
 }
 
-.menu-backdrop {
-  position: absolute;
-  top: var(--block-top);
-  left: var(--block-left);
-  height: var(--block-height);
-  width: var(--block-width);
-  border-radius: 4px;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease, visibility 1s ease, top 1s cubic-bezier(0.75, 0, 0, 1) 0.1s, left 1s cubic-bezier(0.75, 0, 0, 1) 0.1s, height 1s cubic-bezier(0.75, 0, 0, 1) 0.1s, width 1s cubic-bezier(0.75, 0, 0, 1) 0.1s;
-}
 
 .link-name {
   position: relative;
@@ -34,4 +19,29 @@
   background-color: black;
   color: white;
 }
+.zoomed-image {
+  width: auto;
+  height: auto;
+  transform: scale(1.4);
+  animation: zoomIn 0.5s ease-in-out forwards;
+}
 
+@keyframes zoomIn {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+  min-width: 33.33%;
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+}

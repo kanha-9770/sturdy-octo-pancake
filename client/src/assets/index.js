@@ -17,6 +17,9 @@ import paperCupMachineImage from "./nav_machine/PaperCupMachine.png";
 import paperPlateMachineImage from "./nav_machine/PaperPlate.png";
 import fullyAutomaticBagMachineImage from "./nav_machine/FullyAutomaticPaperBagMachine.png";
 import paperBowlMachineImage from "./nav_machine/PaperBowlMachine.webp"
+import paperBowlMachineImage1 from "./nav_machine/PaperBowlMachine1.png"
+import paperBowlMachineImage2 from "./nav_machine/PaperBowlMachine2.png"
+import paperBowlMachineImage3 from "./nav_machine/PaperBowlMachine3.png"
 import paperFlexoMachineImage from "./nav_machine/FlexoPrintingMachine.png"
 import paperStrawMachine from "./nav_machine/PaperStrawMachine.png"
 export {
@@ -35,6 +38,9 @@ export {
   paperCupMachineImage,
   paperPlateMachineImage,
   paperBowlMachineImage,
+  paperBowlMachineImage1,
+  paperBowlMachineImage2,
+  paperBowlMachineImage3,
   fullyAutomaticBagMachineImage,
   paperFlexoMachineImage,
   paperStrawMachine

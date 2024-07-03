@@ -108,7 +108,7 @@ const ProfilePage = () => {
     );
 };
 
-const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, setIsVisible,show,setShow }) => {
+const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, setIsVisible, show, setShow }) => {
     const [open, setOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [isContactFormVisible, setContactFormVisible] = useState(false);
@@ -144,7 +144,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                 <Link
                     onMouseEnter={handleMouseLeave}
                     to={"/"}
-                    className="w-1/4 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
+                    className="w-1/5 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
                 >
                     <img
                         className={`z-30 ${hoveredItem ? "h-8" : "h-8"} w-12`}
@@ -156,12 +156,12 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                         alt="Logo"
                     />
                 </Link>
-                <ul className="w-2/4 h-10 rounded-lg md:flex hidden justify-center flex-wrap items-center font-montserrat text-16 font-thin relative">
+                <ul className="w-3/5 h-10 flex-wrap rounded-lg md:flex hidden justify-center  items-center font-montserrat text-16 font-thin relative">
                     <NavLinks hoveredItem={hoveredItem} setHoveredItem={setHoveredItem} heading={heading} setHeading={setHeading} isVisible={isVisible} setIsVisible={setIsVisible} />
                 </ul>
                 <span
                     onMouseEnter={handleMouseLeave}
-                    className={`w-1/4 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"
+                    className={`w-1/5 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"
                         }`}
                 >
                     <div className="flex items-center space-x-1">

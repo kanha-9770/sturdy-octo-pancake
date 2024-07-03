@@ -3,21 +3,24 @@ import { gsap } from 'gsap';
 import { IoIosArrowDown, IoIosArrowUp } from '../index';
 import { items, titlesWithImages } from '../../constants';
 import "../../App.css";
-import slideInAnimation from './SlideAnimationLeft';
+
 const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, show }) => {
     const carouselRef = useRef(null);
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+
     const scrollDown = () => {
         if (currentIndex < items.length - 2) {
             setCurrentIndex(currentIndex + 1);
         }
     };
+
     const scrollUp = () => {
         if (currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
         }
     };
+
     const handleWheel = (e) => {
         if (e.deltaY > 0) {
             scrollDown();
@@ -25,6 +28,7 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
             scrollUp();
         }
     };
+
     const handleMouseLeave = (e) => {
         const container = containerRef.current;
         const rect = container.getBoundingClientRect();
@@ -43,12 +47,12 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
             });
         }
     };
+
     useEffect(() => {
         const containerElement = containerRef.current;
-        if (containerElement && show) {
-            slideInAnimation(containerElement);
+        if (containerElement) {
+            containerElement.addEventListener('mouseleave', handleMouseLeave);
         }
-        containerElement.addEventListener('mouseleave', handleMouseLeave);
         return () => {
             if (containerElement) {
                 containerElement.removeEventListener('mouseleave', handleMouseLeave);
@@ -73,11 +77,11 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
     return (
         <div
             ref={containerRef}
-            className="flex flex-col top-0 border-b-2 rounded-b-xl md:flex-row p-4 sm:p-6 md:p-8 lg:p-4 h-full md:h-full items-center justify-center"
+            className="flex flex-col top-0 border-b-2 rounded-b-xl md:flex-row pb-10 h-full md:h-full items-center justify-center"
         >
             <div className="grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-4 flex-shrink image-container">
                 {titlesWithImages.map((item, index) => (
-                    <div key={index} className="flex p-2 flex-col items-center">
+                    <div key={index} className="flex p-2 mt-4 flex-col items-center">
                         <img
                             src={item.image}
                             alt={item.title}
@@ -92,7 +96,7 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
                 <div className="">
                     <div ref={carouselRef}>
                         {items.slice(currentIndex, currentIndex + 2).map((item, index) => (
-                            <div key={index} className={`${item.color} flex items-center p-5 rounded-3xl mb-2`}>
+                            <div key={index} className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}>
                                 <div className="h-12 w-12 mr-3 flex justify-center items-center text-2xl">
                                     <item.icon></item.icon>
                                 </div>

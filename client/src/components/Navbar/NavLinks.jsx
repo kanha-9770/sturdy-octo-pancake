@@ -10,6 +10,7 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
     const animateref = useRef(null);
     const listItemRefs = useRef([]);
     const [show, setShow] = useState(false);
+
     useEffect(() => {
         if (hoveredItem) {
             if (isVisible) {
@@ -25,7 +26,6 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
             gsap.to(animateref.current, { y: '-100%', opacity: 0, duration: 0.8, ease: 'power3.in' });
         }
     }, [hoveredItem]);
-
 
     const handleMouseEnternew = (linkName) => {
         setHeading(linkName);
@@ -52,17 +52,20 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                 heading !== link.name ? setHeading(link.name) : setHeading("");
                             }}
                         >
-                            <p
-                                ref={el => listItemRefs.current[index] = el}
-                                className={`flex menuDrop item-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
+                            <Link
+                                to={`/${link.name.toLowerCase()}`} // Convert link.name to lowercase here
+                                ref={el => listItemRefs.current[index] = el} // Assuming listItemRefs is a useRef initialized elsewhere
+                                className={`flex menuDrop items-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
                                     ? heading === link.name
                                         ? "bg-black text-white rounded-full"
                                         : "text-black"
                                     : "text-black"
                                     } text-base rounded-full`}
                             >
-                                {link.name}
-                            </p>
+                                {link.name} {/* Display link.name in its original case */}
+                            </Link>
+
+
                         </h6>
 
                         {hoveredItem === link.name && (
@@ -100,38 +103,12 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                     setHeading={setHeading}
                                     isVisible={isVisible}
                                     setIsVisible={setIsVisible} />}
-                                {link.submenu &&
-                                    link.comp !== "AboutUs" &&
-                                    link.name !== "Products" &&
-                                    link.name !== "Application" && (
-                                        <div className="bg-white shadow-lg w-full p-5 grid grid-cols-1 md:grid-cols-3 gap-10">
-                                            {link.sublinks.map((mysublinks) => (
-                                                <div key={mysublinks.Head} className="text-center">
-                                                    <h1 className="text-lg font-montserrat text-16">
-                                                        {mysublinks.Head}
-                                                    </h1>
-                                                    <ul>
-                                                        {mysublinks.sublink.map((slink) => (
-                                                            <li
-                                                                className="text-sm text-gray-600 my-2.5"
-                                                                key={slink.name}
-                                                            >
-                                                                <Link
-                                                                    to={slink.link}
-                                                                    className="hover:text-primary"
-                                                                >
-                                                                    {slink.name}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
+
                             </div>
                         )}
                     </div>
+
+                    {/* for mobile */}
                     {open && (
                         <div className="md:hidden w-full bg-inherit">
                             <div
@@ -142,7 +119,14 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                         : setHeading("");
                                 }}
                             >
-                                <p className="text-lg">{link.name}</p>
+                                <Link
+                                    to={`/${link.name.toLowerCase()}`} // Convert link.name to lowercase here
+                                    ref={el => listItemRefs.current[index] = el} // Assuming listItemRefs is a useRef initialized elsewhere
+                                    className="text-lg"
+                                >
+                                    {link.name} {/* Display link.name in its original case */}
+                                </Link>
+
                                 <span>{heading === link.name ? "-" : "+"}</span>
                             </div>
                             {heading === link.name && (
@@ -150,35 +134,6 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                     {link.comp === "AboutUs" && <Services />}
                                     {link.name === "Products" && <Banners />}
                                     {link.name === "Application" && <Application />}
-                                    {link.submenu &&
-                                        link.comp !== "AboutUs" &&
-                                        link.name !== "Products" &&
-                                        link.name !== "Application" && (
-                                            <div>
-                                                {link.sublinks.map((mysublinks) => (
-                                                    <div key={mysublinks.Head} className="text-center">
-                                                        <h1 className="text-lg font-montserrat text-16">
-                                                            {mysublinks.Head}
-                                                        </h1>
-                                                        <ul>
-                                                            {mysublinks.sublink.map((slink) => (
-                                                                <li
-                                                                    className="text-sm text-gray-600 my-2.5"
-                                                                    key={slink.name}
-                                                                >
-                                                                    <Link
-                                                                        to={slink.link}
-                                                                        className="hover:text-primary"
-                                                                    >
-                                                                        {slink.name}
-                                                                    </Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
                                 </div>
                             )}
                         </div>
