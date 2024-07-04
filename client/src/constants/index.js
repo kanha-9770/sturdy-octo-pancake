@@ -76,10 +76,10 @@ export const links = [
     name: "Solutions",
   },
   {
-    name: "Mediaroom",
+    name: "Support",
   },
   {
-    name: "Other",
+    name: "Databank",
   },
 ];
 // images for about us
@@ -180,7 +180,6 @@ export const Machines = [
     category: "Paper Plate Machine,All Products",
     icon: paperplate2,
   },
-  
 
   {
     name: "Paper Flexo Machine",

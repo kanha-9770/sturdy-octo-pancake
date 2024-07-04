@@ -77,7 +77,7 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
     return (
         <div
             ref={containerRef}
-            className="flex flex-col top-0 border-b-2 rounded-b-xl md:flex-row pb-10 h-full md:h-full items-center justify-center"
+            className="flex bg-white flex-col top-0 border-b-2 rounded-xl md:flex-row p-4 pb-8 h-full md:h-full items-center justify-center"
         >
             <div className="grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-4 flex-shrink image-container">
                 {titlesWithImages.map((item, index) => (

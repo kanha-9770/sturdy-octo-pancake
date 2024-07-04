@@ -16,7 +16,7 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
             if (isVisible) {
                 gsap.fromTo(
                     animateref.current,
-                    { y: '-20%', opacity: 0 },
+                    { y: '-50%', opacity: 0 },
                     { y: '0%', opacity: 1, duration: 2, ease: 'power3.out', delay: 0.1 }
                 );
                 setShow(true);
@@ -53,8 +53,8 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                             }}
                         >
                             <Link
-                                to={`/${link.name.toLowerCase()}`} // Convert link.name to lowercase here
-                                ref={el => listItemRefs.current[index] = el} // Assuming listItemRefs is a useRef initialized elsewhere
+                                to={`/${link.name.toLowerCase()}`}
+                                ref={el => listItemRefs.current[index] = el}
                                 className={`flex menuDrop items-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
                                     ? heading === link.name
                                         ? "bg-black text-white rounded-full"
@@ -62,9 +62,9 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                     : "text-black"
                                     } text-base rounded-full`}
                             >
-                                {link.name} {/* Display link.name in its original case */}
+                                {link.name}
                             </Link>
-
+                            <span></span>
 
                         </h6>
 
@@ -103,7 +103,6 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                     setHeading={setHeading}
                                     isVisible={isVisible}
                                     setIsVisible={setIsVisible} />}
-
                             </div>
                         )}
                     </div>

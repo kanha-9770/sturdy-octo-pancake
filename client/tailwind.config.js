@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"], // Add "sans-serif" as fallback
+        montserrat: ["Montserrat", "sans-serif"],
       },
       fontSize: {
         16: "16px",

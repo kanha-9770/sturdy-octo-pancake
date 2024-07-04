@@ -1,3 +1,4 @@
+import SearchBar from "../Layout/SearchBar";
 import {
     React,
     useState,
@@ -112,7 +113,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
     const [open, setOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [isContactFormVisible, setContactFormVisible] = useState(false);
-
+    const [openSearch, setOpenSearch] = useState(false)
     const toggleContactForm = () => {
         setContactFormVisible(!isContactFormVisible);
     };
@@ -129,9 +130,12 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
         setHeading(null);
         setIsVisible(true);
     };
+    const handleSearchBar = () => {
+        setOpenSearch(!openSearch);
+    }
     return (
         <motion.nav
-            className={`fixed top-2 left-2 right-2 z-50 mx-auto max-w-screen-2xl  backdrop-blur-[4px] ${hoveredItem ? "rounded-t-lg bg-white" : "rounded-lg"
+            className={`fixed top-2 left-2 right-2 z-50 mx-auto max-w-screen-2xl  backdrop-blur-[4px] ${hoveredItem ? "rounded-t-lg" : "rounded-lg"
                 }`}
         >
             <div className="flex items-center gap-4 justify-center h-14 px-4 md:px-4 lg:px-6 " >
@@ -144,7 +148,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                 <Link
                     onMouseEnter={handleMouseLeave}
                     to={"/"}
-                    className="w-1/5 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
+                    className="w-1/4 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
                 >
                     <img
                         className={`z-30 ${hoveredItem ? "h-8" : "h-8"} w-12`}
@@ -156,12 +160,12 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                         alt="Logo"
                     />
                 </Link>
-                <ul className="w-3/5 h-10 flex-wrap rounded-lg md:flex hidden justify-center  items-center font-montserrat text-16 font-thin relative">
+                <ul className="w-2/4 h-10 flex-wrap bg-white rounded-3xl md:flex hidden justify-center  items-center font-montserrat text-16 font-thin relative">
                     <NavLinks hoveredItem={hoveredItem} setHoveredItem={setHoveredItem} heading={heading} setHeading={setHeading} isVisible={isVisible} setIsVisible={setIsVisible} />
                 </ul>
                 <span
                     onMouseEnter={handleMouseLeave}
-                    className={`w-1/5 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"
+                    className={`w-1/4 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"
                         }`}
                 >
                     <div className="flex items-center space-x-1">
@@ -177,7 +181,15 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                             EN
                         </div>
                     </div>
-                    <ImSearch className="font-montserrat text-16 font-thin stroke-0 cursor-pointer" />
+                    <ImSearch onClick={handleSearchBar} className="font-montserrat text-16 font-thin stroke-0 cursor-pointer" />
+                    {
+                        openSearch && (
+                            <div className={`fixed left-0 right-0 mx-auto shadow-lg max-w-screen-2xl rounded-b-xl h-auto z-10 top-14 flex justify-center items-center`}
+                            >
+                                <SearchBar />
+                            </div>
+                        )
+                    }
                     <svg
                         onClick={toggleProfile}
                         xmlns="http://www.w3.org/2000/svg"
