@@ -1,3 +1,4 @@
+import CountryPage from "../Layout/CountryPage";
 import SearchBar from "../Layout/SearchBar";
 import {
     React,
@@ -13,116 +14,123 @@ import {
 } from "../index";
 const ProfilePage = () => {
     return (
-        <div className="absolute top-16 right-0 w-64 bg-white text-black p-4 rounded-lg shadow-lg font-montserrat text-16 font-thin z-50">
-            <div className="grid grid-cols-3 font-montserrat text-16 font-thin gap-2">
-                <div className="flex flex-col  items-center">
-                    <img
-                        src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
-                        alt="Account"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Account</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
-                        alt="Search"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Search</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
-                        alt="Business"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Business</span>
-                </div>
+        <>
+            <div className="absolute top-16 right-0 w-64 bg-white text-black p-4 rounded-lg shadow-lg font-montserrat text-16 font-thin z-50">
+                <div className="grid grid-cols-3 font-montserrat text-16 font-thin gap-2">
+                    <div className="flex flex-col  items-center">
+                        <img
+                            src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
+                            alt="Account"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Account</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
+                            alt="Search"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Search</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
+                            alt="Business"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Business</span>
+                    </div>
 
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
-                        alt="Account"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Account</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
-                        alt="Search"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Search</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
-                        alt="Business"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Business</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://static.vecteezy.com/system/resources/previews/000/649/768/original/news-icon-symbol-sign-vector.jpg"
-                        alt="Account"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Account</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
-                        alt="Account"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Account</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
-                        alt="Search"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Search</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
-                        alt="Business"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Business</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img
-                        src="https://static.vecteezy.com/system/resources/previews/000/649/768/original/news-icon-symbol-sign-vector.jpg"
-                        alt="Account"
-                        className="w-8 h-8 rounded-full"
-                    />
-                    <span>Account</span>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
+                            alt="Account"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Account</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
+                            alt="Search"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Search</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
+                            alt="Business"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Business</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://static.vecteezy.com/system/resources/previews/000/649/768/original/news-icon-symbol-sign-vector.jpg"
+                            alt="Account"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Account</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://i.pinimg.com/originals/96/41/d6/9641d6b5aa4c60eee46459b4274f68b4.png"
+                            alt="Account"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Account</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://i.pinimg.com/564x/17/f4/e0/17f4e08a32dd227581ed630d3051081c.jpg"
+                            alt="Search"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Search</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRZRwOEqf22XIzYboMCyerdrVp92C_pOU3Qg&s"
+                            alt="Business"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Business</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="https://static.vecteezy.com/system/resources/previews/000/649/768/original/news-icon-symbol-sign-vector.jpg"
+                            alt="Account"
+                            className="w-8 h-8 rounded-full"
+                        />
+                        <span>Account</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
 const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, setIsVisible, show, setShow }) => {
     const [open, setOpen] = useState(false);
+    const [isFlagOpen, setIsFlagOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [isContactFormVisible, setContactFormVisible] = useState(false);
     const [openSearch, setOpenSearch] = useState(false)
     const toggleContactForm = () => {
         setContactFormVisible(!isContactFormVisible);
+        isFlagOpen(false);
+        setOpenSearch(false);
+        setProfileOpen(false);
     };
-
     const toggleMenu = () => {
         setOpen(!open);
-    };
 
+    };
     const toggleProfile = () => {
+        setOpenSearch(false);
+        setIsFlagOpen(false);
         setProfileOpen(!profileOpen);
     };
     const handleMouseLeave = () => {
@@ -131,6 +139,8 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
         setIsVisible(true);
     };
     const handleSearchBar = () => {
+        setIsFlagOpen(false)
+        setProfileOpen(false)
         setOpenSearch(!openSearch);
     }
     return (
@@ -168,20 +178,10 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                     className={`w-1/4 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"
                         }`}
                 >
-                    <div className="flex items-center space-x-1">
-                        <img
-                            src="https://flagcdn.com/in.svg"
-                            alt="India Flag"
-                            className="w-4 h-4 object-cover rounded-full border-1"
-                        />
-                        <div
-                            className={`flex items-center justify-center font-montserrat text-16 font-thin cursor-pointer ${hoveredItem ? " text-black " : "text-black"
-                                }`}
-                        >
-                            EN
-                        </div>
+                    <div className="flex items-center justify-center space-x-1">
+                        <CountryPage isFlagOpen={isFlagOpen} setIsFlagOpen={setIsFlagOpen} setOpenSearch={setOpenSearch} setProfileOpen={setProfileOpen} />
                     </div>
-                    <ImSearch onClick={handleSearchBar} className="font-montserrat text-16 font-thin stroke-0 cursor-pointer" />
+                    <ImSearch onClick={() => handleSearchBar()} className="font-montserrat text-16 font-thin stroke-0 cursor-pointer" />
                     {
                         openSearch && (
                             <div className={`fixed left-0 right-0 mx-auto shadow-lg max-w-screen-2xl rounded-b-xl h-auto z-10 top-14 flex justify-center items-center`}
@@ -191,7 +191,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                         )
                     }
                     <svg
-                        onClick={toggleProfile}
+                        onClick={() => toggleProfile()}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 256 256"
                         className="h-5 w-6 cursor-pointer font-montserrat text-16 font-thin"
@@ -256,17 +256,17 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                     <span
                         className={`cursor-pointer font-montserrat text-16 font-thin rounded-full p-0 pl-4 pr-4
                             text-white bg-black`}
-                        onClick={toggleContactForm}
+                        onClick={() => toggleContactForm()}
                     >
                         Contact
                     </span>
                 </span>
-                {/* {isContactFormVisible && (
-            <ContactForm
-              isVisible={isContactFormVisible}
-              onClose={toggleContactForm}
-            />
-          )} */}
+                {isContactFormVisible && (
+                    <ContactForm
+                        isVisible={isContactFormVisible}
+                        onClose={()=>toggleContactForm()}
+                    />
+                )}
             </div>
             {profileOpen && <ProfilePage />}
             {/* Mobile nav */}
@@ -278,6 +278,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading, isVisible, s
                     <NavLinks
                         hoveredItem={hoveredItem} setHoveredItem={setHoveredItem} heading={heading} setHeading={setHeading} isVisible={isVisible} setIsVisible={setIsVisible}
                         open={open}
+                        openSearch={openSearch}
                         setOpen={setOpen}
                     />
                 </ul>

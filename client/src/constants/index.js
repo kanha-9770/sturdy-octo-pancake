@@ -23,6 +23,7 @@ import {
   paperFlexoMachineImage,
   fullyAutomaticBagMachineImage,
   paperStrawMachine,
+  BookServiceImage,
 } from "../assets";
 export const items = [
   {
@@ -252,4 +253,16 @@ export const SidebarLinks = [
     link: "/help-me-charge",
     icon: paperstraw,
   },
+];
+// support itemm
+export const supporItem = [
+  { title: "Book a Service", image: BookServiceImage },
+  { title: "Genuine Parts", image: BookServiceImage },
+  { title: "User Guide", image: BookServiceImage },
+  { title: "Machine Warranty", image: BookServiceImage },
+  { title: "Additional Item 1", image: BookServiceImage },
+  { title: "Additional Item 2", image: BookServiceImage },
+  { title: "Additional Item 3", image: BookServiceImage },
+  { title: "Additional Item 4", image: BookServiceImage },
+  { title: "Additional Item 5", image: BookServiceImage },
 ];

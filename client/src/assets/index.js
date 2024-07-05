@@ -22,6 +22,9 @@ import paperBowlMachineImage2 from "./nav_machine/PaperBowlMachine2.png"
 import paperBowlMachineImage3 from "./nav_machine/PaperBowlMachine3.png"
 import paperFlexoMachineImage from "./nav_machine/FlexoPrintingMachine.png"
 import paperStrawMachine from "./nav_machine/PaperStrawMachine.png"
+//nav_support
+import BookServiceImage from "./nav_support/BookService.png"
+import BgMapImage from "./nav_support/BgMapImage.png"
 export {
   paperplate2,
   papercup,
@@ -43,5 +46,7 @@ export {
   paperBowlMachineImage3,
   fullyAutomaticBagMachineImage,
   paperFlexoMachineImage,
-  paperStrawMachine
+  paperStrawMachine,
+  BookServiceImage,
+  BgMapImage
 };

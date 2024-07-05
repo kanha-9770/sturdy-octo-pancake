@@ -1,26 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
 import { Machines, SidebarLinks, images } from '../../constants';
-import me from "../../assets/BgForAbout.png"
+import me from "../../assets/BgForAbout.png";
+
 const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
   const [hoveredCategory, setHoveredCategory] = useState('All Products');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState(null);
   const containerRef = useRef(null);
+
   const filteredMachines = Machines
     .filter((machine) => machine.category.includes(hoveredCategory))
     .map((machine) => ({
       ...machine,
       image: images[machine.image],
     }));
+
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredMachines.length);
     setActiveCategory(filteredMachines[(currentIndex + 1) % filteredMachines.length].category.split(',')[0]);
   };
+
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + filteredMachines.length) % filteredMachines.length);
     setActiveCategory(filteredMachines[(currentIndex - 1 + filteredMachines.length) % filteredMachines.length].category.split(',')[0]);
   };
+
   const handleMouseLeave = (e) => {
     const container = containerRef.current;
     const rect = container.getBoundingClientRect();
@@ -33,6 +38,7 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
       setIsVisible(true);
     }
   };
+
   useEffect(() => {
     const containerElement = containerRef.current;
     if (containerElement) {
@@ -52,17 +58,19 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
 
   return (
     <div
-
       ref={containerRef}
       className="w-full z-30 md:h-full bg-white p-4 border-b-2 rounded-xl flex flex-col justify-center items-center font-medium"
     >
-      <div className=" w-full flex flex-col md:flex-row rounded-lg overflow-hidden">
-        <div style={{
-          backgroundImage: `url(${me})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }} className="flex h-full justify-center items-center w-full md:w-3/4 relative px-4">
+      <div className="w-full flex flex-col md:flex-row rounded-lg overflow-hidden">
+        <div
+          style={{
+            backgroundImage: `url(${me})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+          className="flex h-full justify-center items-center w-full md:w-3/4 relative px-4"
+        >
           {filteredMachines.length > 3 && (
             <button
               onClick={handlePrev}
@@ -72,13 +80,13 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
             </button>
           )}
           <div className="flex overflow-hidden w-full justify-center">
-            {filteredMachines.length <= 2 ? (
+            {filteredMachines.length <= 3 ? (
               filteredMachines.map((machine, index) => (
-                <div key={`${machine.name}-${index}`} className="text-center relative">
+                <div key={`${machine.name}-${index}`} className="text-center relative w-1/3">
                   <img
                     src={machine.image}
                     alt={machine.name}
-                    className="object-contain rounded-lg relative z-10 h-golden-h w-full"
+                    className="object-contain rounded-lg relative z-10 h-[200px] w-full"
                   />
                   <h3 className="text-lg text-black font-bold mt-2 relative z-20">{machine.name}</h3>
                   <div className="flex justify-center space-x-4 mt-2">
@@ -92,8 +100,7 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
                   <img
                     src={machine.image}
                     alt={machine.name}
-                    className={`object-scale-down rounded-lg relative z-10 ${index === 1 ? 'zoomed-image w-[400px] h-[200px]' : 'h-[200px] w-full'
-                      }`}
+                    className={`object-scale-down rounded-lg relative z-10 ${index === 1 ? 'zoomed-image w-[400px] h-[200px]' : 'h-[200px] w-full'}`}
                   />
                   <h1 className="text-lg text-black font-bold pt-0 relative z-20">{machine.name}</h1>
                   <div className="flex justify-center pt-4 space-x-4 mt-2">
@@ -106,7 +113,7 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
           {filteredMachines.length > 3 && (
             <button
               onClick={handleNext}
-              className="absolute right-0 z-10 p-0 text-4xl mr-1  h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all before:absolute before:bottom-0 before:right-0 before:top-0 before:z-0 before:w-0 before:bg-black before:transition-all before:duration-75 hover:text-white hover:before:left-0 hover:before:w-full"
+              className="absolute right-0 z-10 p-0 text-4xl mr-1 h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all before:absolute before:bottom-0 before:right-0 before:top-0 before:z-0 before:w-0 before:bg-black before:transition-all before:duration-75 hover:text-white hover:before:left-0 hover:before:w-full"
             >
               <span className="relative z-10"><MdKeyboardArrowRight /></span>
             </button>
@@ -123,7 +130,7 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
               className={`flex items-center space-x-4 text-lg transition-colors duration-300 cursor-pointer ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'font-montserrat font-bold text-16 text-[#483d73]' : 'font-montserrat text-14 text-[#483d73]'}`}
             >
               <div
-                className={`flex items-center bg-fixed object-contain bg-no-repeat h-6 w-6 justify-center cursor-pointer  ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'h-8 w-8 text-[#483d73] font-bold' : 'text-black'}`}
+                className={`flex items-center bg-fixed object-contain bg-no-repeat h-6 w-6 justify-center cursor-pointer ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'h-8 w-8 text-[#483d73] font-bold' : 'text-black'}`}
               >
                 <img className='rounded-full' src={link.icon} alt="machine icon" />
               </div>
@@ -151,4 +158,5 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
     </div>
   );
 };
+
 export default AboutLayOut;

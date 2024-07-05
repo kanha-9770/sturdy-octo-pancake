@@ -2,28 +2,30 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Banners from "../Layout/Banner";
 import { links } from "../../constants/index";
-import Services from "../Layout/Service";
 import Layout from "../Layout/Layout";
 import gsap from "gsap";
+import Support from "../Layout/Support";
 
-const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible }) => {
+const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible,openSearch}) => {
     const animateref = useRef(null);
     const listItemRefs = useRef([]);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        if (hoveredItem) {
-            if (isVisible) {
-                gsap.fromTo(
-                    animateref.current,
-                    { y: '-50%', opacity: 0 },
-                    { y: '0%', opacity: 1, duration: 2, ease: 'power3.out', delay: 0.1 }
-                );
-                setShow(true);
-                setIsVisible(false);
+        if(!openSearch){
+            if (hoveredItem) {
+                if (isVisible) {
+                    gsap.fromTo(
+                        animateref.current,
+                        { y: '-50%', opacity: 0 },
+                        { y: '0%', opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
+                    );
+                    setShow(true);
+                    setIsVisible(false);
+                }
+            } else {
+                gsap.to(animateref.current, { y: '-100%', opacity: 0, duration: 0.8, ease: 'power3.in' });
             }
-        } else {
-            gsap.to(animateref.current, { y: '-100%', opacity: 0, duration: 0.8, ease: 'power3.in' });
         }
     }, [hoveredItem]);
 
@@ -57,7 +59,7 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                 ref={el => listItemRefs.current[index] = el}
                                 className={`flex menuDrop items-center p-0 font-montserrat text-16 pl-2 pr-2 justify-center link-name ${hoveredItem
                                     ? heading === link.name
-                                        ? "bg-black text-white rounded-full"
+                                        ? "bg-[#483d73] text-white rounded-full"
                                         : "text-black"
                                     : "text-black"
                                     } text-base rounded-full`}
@@ -103,6 +105,14 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                                     setHeading={setHeading}
                                     isVisible={isVisible}
                                     setIsVisible={setIsVisible} />}
+                                {link.name === "Support" && <Support
+                                    hoveredItem={hoveredItem}
+                                    setHoveredItem={setHoveredItem}
+                                    heading={heading}
+                                    setHeading={setHeading}
+                                    isVisible={isVisible}
+                                    setIsVisible={setIsVisible}
+                                />}
                             </div>
                         )}
                     </div>

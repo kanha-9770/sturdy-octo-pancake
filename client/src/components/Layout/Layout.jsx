@@ -41,7 +41,6 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
                     setCurrentIndex(0);
                     setHeading(null);
                     setIsVisible(true);
-                    setShow(false);
                     gsap.to(container, { opacity: 1 });
                 }
             });
