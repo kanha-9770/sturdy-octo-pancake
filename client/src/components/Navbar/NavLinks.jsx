@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import Banners from "../Layout/Banner";
 import { links } from "../../constants/index";
-import Layout from "../Layout/Layout";
 import gsap from "gsap";
-import Support from "../Layout/Support";
+import AboutLayout from "../Layout/AboutLayout";
+import ProductLayout from "../Layout/ProductLayout";
+import SupportLayout from "../Layout/SupportLayout";
 
-const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible,openSearch}) => {
+const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, openSearch }) => {
     const animateref = useRef(null);
     const listItemRefs = useRef([]);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        if(!openSearch){
+        if (!openSearch) {
             if (hoveredItem) {
                 if (isVisible) {
                     gsap.fromTo(
@@ -66,54 +66,59 @@ const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVi
                             >
                                 {link.name}
                             </Link>
+
                             <span></span>
 
                         </h6>
 
                         {hoveredItem === link.name && (
-                            <div
-                                ref={animateref}
-                                className={`fixed left-0 right-0 mx-auto shadow-lg max-w-screen-2xl rounded-b-xl h-auto z-10 top-14 flex justify-center items-center`}
-                            >
+                            <>
+
                                 <div
-                                    id="borderline"
-                                    className="absolute top-0 left-0 w-full"
-                                />
-                                {link.comp === "AboutUs" && (
-                                    <Layout
+                                    ref={animateref}
+                                    className={`fixed left-0 right-0 mx-auto shadow-lg max-w-screen-2xl rounded-b-xl h-auto z-10 top-14 flex justify-center items-center`}
+                                >
+
+
+                                    {link.comp === "AboutUs" && (
+                                        <>
+
+                                            <AboutLayout
+                                                hoveredItem={hoveredItem}
+                                                setHoveredItem={setHoveredItem}
+                                                heading={heading}
+                                                setHeading={setHeading}
+                                                isVisible={isVisible}
+                                                setIsVisible={setIsVisible}
+                                                show={show}
+                                                setShow={setShow}
+                                            />
+                                        </>
+                                    )}
+                                    {link.name === "Products" && <ProductLayout
                                         hoveredItem={hoveredItem}
                                         setHoveredItem={setHoveredItem}
                                         heading={heading}
                                         setHeading={setHeading}
                                         isVisible={isVisible}
                                         setIsVisible={setIsVisible}
-                                        show={show}
-                                        setShow={setShow}
-                                    />
-                                )}
-                                {link.name === "Products" && <Banners
-                                    hoveredItem={hoveredItem}
-                                    setHoveredItem={setHoveredItem}
-                                    heading={heading}
-                                    setHeading={setHeading}
-                                    isVisible={isVisible}
-                                    setIsVisible={setIsVisible}
-                                />}
-                                {link.name === "Application" && <Layout hoveredItem={hoveredItem}
-                                    setHoveredItem={setHoveredItem}
-                                    heading={heading}
-                                    setHeading={setHeading}
-                                    isVisible={isVisible}
-                                    setIsVisible={setIsVisible} />}
-                                {link.name === "Support" && <Support
-                                    hoveredItem={hoveredItem}
-                                    setHoveredItem={setHoveredItem}
-                                    heading={heading}
-                                    setHeading={setHeading}
-                                    isVisible={isVisible}
-                                    setIsVisible={setIsVisible}
-                                />}
-                            </div>
+                                    />}
+                                    {link.name === "Application" && <AboutLayout hoveredItem={hoveredItem}
+                                        setHoveredItem={setHoveredItem}
+                                        heading={heading}
+                                        setHeading={setHeading}
+                                        isVisible={isVisible}
+                                        setIsVisible={setIsVisible} />}
+                                    {link.name === "Support" && <SupportLayout
+                                        hoveredItem={hoveredItem}
+                                        setHoveredItem={setHoveredItem}
+                                        heading={heading}
+                                        setHeading={setHeading}
+                                        isVisible={isVisible}
+                                        setIsVisible={setIsVisible}
+                                    />}
+                                </div>
+                            </>
                         )}
                     </div>
 

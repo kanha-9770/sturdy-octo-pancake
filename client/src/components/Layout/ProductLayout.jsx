@@ -3,7 +3,7 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
 import { Machines, SidebarLinks, images } from '../../constants';
 import me from "../../assets/BgForAbout.png";
 
-const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
+const ProductLayout = ({ setHoveredItem, setHeading, setIsVisible }) => {
   const [hoveredCategory, setHoveredCategory] = useState('All Products');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState(null);
@@ -98,9 +98,11 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
               [...filteredMachines, ...filteredMachines].slice(currentIndex, currentIndex + 3).map((machine, index) => (
                 <div key={`${machine.name}-${index}`} className="pt-0 text-center w-1/3 relative">
                   <img
+               
+
                     src={machine.image}
                     alt={machine.name}
-                    className={`object-scale-down rounded-lg relative z-10 ${index === 1 ? 'zoomed-image w-[400px] h-[200px]' : 'h-[200px] w-full'}`}
+                    className={`object-scale-down relative z-10 transition-transform duration-700 ${index === 1 ? 'zoomed-image w-[400px] h-[200px] p-2' : 'h-[200px] w-full p-6'}`}
                   />
                   <h1 className="text-lg text-black font-bold pt-0 relative z-20">{machine.name}</h1>
                   <div className="flex justify-center pt-4 space-x-4 mt-2">
@@ -127,7 +129,7 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
                 setHoveredCategory(link.name);
                 setCurrentIndex(0);
               }}
-              className={`flex items-center space-x-4 text-lg transition-colors duration-300 cursor-pointer ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'font-montserrat font-bold text-16 text-[#483d73]' : 'font-montserrat text-14 text-[#483d73]'}`}
+              className={`flex items-center space-x-6 text-lg transition-colors duration-300 cursor-pointer ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'font-montserrat font-bold text-16 text-[#483d73]' : 'font-montserrat text-14 text-[#483d73]'}`}
             >
               <div
                 className={`flex items-center bg-fixed object-contain bg-no-repeat h-6 w-6 justify-center cursor-pointer ${hoveredCategory === 'All Products' && activeCategory === link.name ? 'h-8 w-8 text-[#483d73] font-bold' : 'text-black'}`}
@@ -140,17 +142,21 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
         </div>
       </div>
       <div className="flex justify-center w-full">
-        <div className="flex justify-center items-center space-x-2" style={{ width: '75%', marginLeft: '-15rem' }}>
+        <div className={`flex justify-center items-center ${hoveredCategory === 'All Products' ? 'space-x-0' : 'space-x-2'}`} style={{ width: '75%', marginLeft: '-15rem' }}>
           {filteredMachines.map((machine, index) => (
             <div
               key={index}
-              className={`flex items-center h-4 bg-fixed object-contain bg-no-repeat w-4 justify-center cursor-pointer ${index === (currentIndex + 1) % filteredMachines.length ? 'h-8 w-8' : 'text-black'}`}
+              className={`flex items-center ${index === (currentIndex + 1) % filteredMachines.length ? hoveredCategory !== 'All Products' ? 'h-8 w-8' : 'h-3 w-3 bg-black rounded-full' : 'h-4 w-4'} bg-fixed bg-no-repeat justify-center cursor-pointer ${hoveredCategory === 'All Products' ? 'text-black' : ''}`}
               onClick={() => {
                 setCurrentIndex(index !== 0 ? index - 1 : filteredMachines.length - 1);
-                setActiveCategory(filteredMachines[index].category.split(',')[0]);
+                setActiveCategory(filteredMachines[index].category.split(',')[0].trim());
               }}
             >
-              <img className='rounded-full bg-transparent' src={machine.icon} alt="machine icon" />
+              {hoveredCategory === 'All Products' ? (
+                <div className='h-2 w-2 bg-black rounded-full'></div>
+              ) : (
+                <img className='rounded-full bg-transparent' src={machine.icon} alt="machine icon" />
+              )}
             </div>
           ))}
         </div>
@@ -159,4 +165,4 @@ const AboutLayOut = ({ setHoveredItem, setHeading, setIsVisible }) => {
   );
 };
 
-export default AboutLayOut;
+export default ProductLayout;

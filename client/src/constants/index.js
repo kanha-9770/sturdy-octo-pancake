@@ -18,10 +18,10 @@ import {
   pinkCityImage,
   paperBowlMachineImage,
   paperBagMachineImage,
-  paperCupMachineImage,
   paperPlateMachineImage,
   paperFlexoMachineImage,
   fullyAutomaticBagMachineImage,
+  PCM110WithPLC,
   paperStrawMachine,
   BookServiceImage,
 } from "../assets";
@@ -87,7 +87,7 @@ export const links = [
 export const images = {
   paperBowlMachineImage,
   paperBagMachineImage,
-  paperCupMachineImage,
+  PCM110WithPLC,
   paperPlateMachineImage,
   paperFlexoMachineImage,
   fullyAutomaticBagMachineImage,
@@ -96,6 +96,42 @@ export const images = {
 
 // items for banners.jsx
 export const Machines = [
+  {
+    name: "NS-015",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
+  {
+    name: "NS-016",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
+  {
+    name: "NS-017",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
+  {
+    name: "NS-018",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
+  {
+    name: "NS-019",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
+  {
+    name: "NS-020",
+    image: "PCM110WithPLC",
+    category: "Paper Cup Machine,All Products",
+    icon: papercup,
+  },
   {
     name: "Paper Bowl Machine 01",
     image: "paperBowlMachineImage",
@@ -121,42 +157,6 @@ export const Machines = [
     icon: paperbowl,
   },
 
-  {
-    name: "NS-015",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
-  {
-    name: "NS-016",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
-  {
-    name: "NS-017",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
-  {
-    name: "NS-018",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
-  {
-    name: "NS-019",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
-  {
-    name: "NS-020",
-    image: "paperCupMachineImage",
-    category: "Paper Cup Machine,All Products",
-    icon: papercup,
-  },
   {
     name: "NS-021",
     image: "paperPlateMachineImage",
@@ -216,15 +216,15 @@ export const SidebarLinks = [
     icon: allproduct,
   },
   {
-    name: "Paper Bowl Machine",
-    link: "/used-Machine",
-    icon: paperbowl,
-  },
-
-  {
     name: "Paper Cup Machine",
     link: "/Paper Cup Machine",
     icon: papercup,
+  },
+
+  {
+    name: "Paper Bowl Machine",
+    link: "/used-Machine",
+    icon: paperbowl,
   },
 
   {

@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import { IoIosArrowDown, IoIosArrowUp } from '../index';
+import { IoIosArrowDown, IoIosArrowUp, Link } from '../index';
 import { items, titlesWithImages } from '../../constants';
 import "../../App.css";
 
-const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, show }) => {
+const AboutLayout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, show }) => {
     const carouselRef = useRef(null);
     const containerRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,12 +81,13 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
             <div className="grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-4 flex-shrink image-container">
                 {titlesWithImages.map((item, index) => (
                     <div key={index} className="flex p-2 mt-4 flex-col items-center">
-                        <img
+                       <Link to={`${item.title}`}>
+                       <img
                             src={item.image}
                             alt={item.title}
                             className="w-golden-w h-golden-h rounded-2xl cursor-pointer"
                         />
-                        <p className="mt-2 text-center text-sm font-semibold">{item.title}</p>
+                        <p className="mt-2 text-center text-sm font-semibold">{item.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -95,7 +96,8 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
                 <div className="">
                     <div ref={carouselRef}>
                         {items.slice(currentIndex, currentIndex + 2).map((item, index) => (
-                            <div key={index} className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}>
+                            <Link to={`${item.title}`}>
+                             <div key={index} className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}>
                                 <div className="h-12 w-12 mr-3 flex justify-center items-center text-2xl">
                                     <item.icon></item.icon>
                                 </div>
@@ -104,6 +106,7 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
                                     <p className="text-xs line-clamp-3">{item.description}</p>
                                 </div>
                             </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -126,4 +129,4 @@ const Layout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisi
     );
 };
 
-export default Layout;
+export default AboutLayout;

@@ -31,23 +31,25 @@ body{
     transform: scale(1.2);
   }
 }
-.carousel-container {
-  overflow: hidden;
+/* Hide scrollbar for all browsers */
+.scrollbar-custom {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* iOS Safari */
 }
 
-.carousel-wrapper {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+/* Optional: Customize scrollbar styles for WebKit-based browsers (Chrome, Safari) */
+.scrollbar-custom::-webkit-scrollbar {
+  display: none;
 }
 
-.carousel-item {
-  flex-shrink: 0;
-  width: 25%;
-  padding: 1rem;
+/* Optional: Customize scrollbar track */
+.scrollbar-custom::-webkit-scrollbar-track {
+  display: none;
 }
 
-.carousel-item img {
-  width: 100%;
-  height: 8rem;
-  object-fit: cover;
+/* Optional: Customize scrollbar thumb */
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  display: none;
 }

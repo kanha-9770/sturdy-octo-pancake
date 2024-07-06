@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBarLayout = () => {
     return (
         <div className="bg-white w-full h-[60vh] p-6 rounded-xl shadow-lg">
             <div className="w-full max-w-2xl mx-auto">
@@ -41,4 +41,4 @@ const SearchBar = () => {
     );
 }
 
-export default SearchBar;
+export default SearchBarLayout;
