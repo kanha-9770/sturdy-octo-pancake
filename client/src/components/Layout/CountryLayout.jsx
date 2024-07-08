@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 
-const CountryLayout = ({ isFlagOpen, setIsFlagOpen, setOpenSearch, setProfileOpen,setAccountOpen }) => {
+const CountryLayout = ({
+    isFlagOpen,
+    setIsFlagOpen,
+    setOpenSearch,
+    setProfileOpen,
+    setAccountOpen
+}) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [visibleCount, setVisibleCount] = useState(16);
     const [selectedCountry, setSelectedCountry] = useState({
@@ -41,27 +47,35 @@ const CountryLayout = ({ isFlagOpen, setIsFlagOpen, setOpenSearch, setProfileOpe
         { name: "Ukraine", language: "Pусский", flag: "https://flagcdn.com/ua.svg" },
         { name: "South Africa", language: "isiZulu", flag: "https://flagcdn.com/za.svg" },
     ];
-
-    // Filter based on search term for country name or language
     const filteredCountries = countries.filter(
         (country) =>
             country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             country.language.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     const handleFlagOpen = () => {
         setIsFlagOpen(!isFlagOpen);
+        
         setOpenSearch(false);
         setProfileOpen(false);
         setAccountOpen(false);
     };
-
     const handleShowMore = () => {
         setVisibleCount((prevCount) => prevCount + 9);
     };
-
+    const countryRef = useRef(null);
+    const handleClickOutside = (event) => {
+        if (countryRef.current && !countryRef.current.contains(event.target)) {
+            setIsFlagOpen(false);
+        }
+    };
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
     return (
-        <div className="relative inline-block text-left">
+        <div ref={countryRef} className="relative inline-block text-left">
             <div className="flex items-center space-x-4">
                 <button
                     type="button"
@@ -71,14 +85,16 @@ const CountryLayout = ({ isFlagOpen, setIsFlagOpen, setOpenSearch, setProfileOpe
                     aria-haspopup="true"
                     onClick={handleFlagOpen}
                 >
-                    <div className="h-8 w-8 flex items-center justify-center rounded-full overflow-hidden border-2">
+                    <div className="h-7 w-7 flex items-center justify-center rounded-full overflow-hidden border-2">
                         <img
                             src={selectedCountry.flag}
                             alt={`${selectedCountry.name} flag`}
                             className="h-full w-full object-cover"
                         />
                     </div>
-                    {selectedCountry.name.slice(0, 2)}
+                    <p className=" font-montserrat text-16">
+                        {selectedCountry.name.slice(0, 2)}
+                    </p>
                 </button>
             </div>
             {isFlagOpen && (
@@ -121,7 +137,9 @@ const CountryLayout = ({ isFlagOpen, setIsFlagOpen, setOpenSearch, setProfileOpe
                             </button>
                         ))}
                         {visibleCount < filteredCountries.length && (
-                            <p className="text-red-500 cursor-pointer pl-4 p-2 flex" onClick={handleShowMore}>more...</p>
+                            <p className="text-red-500 cursor-pointer pl-4 p-2 flex" onClick={handleShowMore}>
+                                more...
+                            </p>
                         )}
                     </div>
                 </div>

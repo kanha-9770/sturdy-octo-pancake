@@ -98,7 +98,7 @@ const ProductLayout = ({ setHoveredItem, setHeading, setIsVisible }) => {
               [...filteredMachines, ...filteredMachines].slice(currentIndex, currentIndex + 3).map((machine, index) => (
                 <div key={`${machine.name}-${index}`} className="pt-0 text-center w-1/3 relative">
                   <img
-               
+
 
                     src={machine.image}
                     alt={machine.name}
@@ -115,7 +115,7 @@ const ProductLayout = ({ setHoveredItem, setHeading, setIsVisible }) => {
           {filteredMachines.length > 3 && (
             <button
               onClick={handleNext}
-              className="absolute right-0 z-10 p-0 text-4xl mr-1 h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all before:absolute before:bottom-0 before:right-0 before:top-0 before:z-0 before:w-0 before:bg-black before:transition-all before:duration-75 hover:text-white hover:before:left-0 hover:before:w-full"
+              className="absolute border-2 rounded-full right-0 z-10 h-10 w-10 animated-button-right"
             >
               <span className="relative z-10"><MdKeyboardArrowRight /></span>
             </button>

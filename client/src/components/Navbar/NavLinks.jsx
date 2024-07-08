@@ -6,29 +6,31 @@ import AboutLayout from "../Layout/AboutLayout";
 import ProductLayout from "../Layout/ProductLayout";
 import SupportLayout from "../Layout/SupportLayout";
 
-const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible, openSearch }) => {
+const NavLinks = ({ hoveredItem, setHoveredItem, open, heading, setHeading, isVisible, setIsVisible}) => {
     const animateref = useRef(null);
     const listItemRefs = useRef([]);
     const [show, setShow] = useState(false);
-
+    const handleMouseLeave = () => {
+        setHoveredItem(null);
+        setHeading(null);
+        setIsVisible(true);
+    };
+    
+    // Animation Logic
     useEffect(() => {
-        if (!openSearch) {
-            if (hoveredItem) {
-                if (isVisible) {
-                    gsap.fromTo(
-                        animateref.current,
-                        { y: '-50%', opacity: 0 },
-                        { y: '0%', opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
-                    );
-                    setShow(true);
-                    setIsVisible(false);
-                }
-            } else {
-                gsap.to(animateref.current, { y: '-100%', opacity: 0, duration: 0.8, ease: 'power3.in' });
-            }
+        if (hoveredItem && isVisible) {
+            gsap.fromTo(
+                animateref.current,
+                { y: '-50%', opacity: 0 },
+                { y: '0%', opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
+            );
+            setShow(true);
+            setIsVisible(false);
+        } else if (!hoveredItem) {
+            gsap.to(animateref.current, { y: '-100%', opacity: 0, duration: 0.8, ease: 'power3.in' });
         }
-    }, [hoveredItem]);
-
+    }, [hoveredItem, isVisible]);
+    
     const handleMouseEnternew = (linkName) => {
         setHeading(linkName);
     };

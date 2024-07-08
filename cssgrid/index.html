@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashlight Grid</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #000;
+        color: beige;
+        overflow-x: hidden;
+      }
+      * {
+        box-sizing: border-box;
+        user-select: none;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 150px);
+        grid-template-rows: repeat(4, 150px);
+        gap: 8px;
+        padding: 32px;
+      }
+      .card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #222;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        transition: 0.15s;
+      }
+      .card:hover,
+      .card:hover ~ .card,
+      .card.neighbor {
+        background: radial-gradient(circle at center, rgba(0, 255, 241, 0.2), transparent 70%);
+      }
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        border-radius: inherit;
+        transition: all 0.25s;
+        height: calc(100% - 2px);
+        width: calc(100% - 2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title1</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title2</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title3</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title4</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title5</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title6</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title7</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title8</h2>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <p>icon</p>
+          <h2>title9</h2>
+        </div>
+      </div>
+    </div>
+    <script>
+      const cards = document.querySelectorAll('.card');
+      const rows = 4;
+      const cols = 4;
+
+      cards.forEach((card, index) => {
+        card.addEventListener('mouseover', () => {
+          const neighbors = getNeighbors(index);
+          neighbors.forEach(neighbor => {
+            if (cards[neighbor]) {
+              cards[neighbor].classList.add('neighbor');
+            }
+          });
+        });
+
+        card.addEventListener('mouseout', () => {
+          const neighbors = getNeighbors(index);
+          neighbors.forEach(neighbor => {
+            if (cards[neighbor]) {
+              cards[neighbor].classList.remove('neighbor');
+            }
+          });
+        });
+      });
+
+      function getNeighbors(index) {
+        const neighbors = [];
+        const row = Math.floor(index / cols);
+        const col = index % cols;
+
+        if (row > 0) neighbors.push(index - cols); // top
+        if (row < rows - 1) neighbors.push(index + cols); // bottom
+        if (col > 0) neighbors.push(index - 1); // left
+        if (col < cols - 1) neighbors.push(index + 1); // right
+
+        return neighbors;
+      }
+    </script>
+  </body>
+</html>

@@ -3,12 +3,13 @@ import './Layout.css';
 import { supporItem } from '../../constants';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
 import { BgMapImage } from '../../assets';
+import { gsap } from 'gsap';
 
-const SupportLayout = () => {
+const SupportLayout = ({ setHoveredItem }) => {
     const carouselRef = useRef(null);
+    const containerRef = useRef(null);
     const firstCardWidth = useRef(0);
     const cardCount = supporItem.length;
-
     useEffect(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;
@@ -60,8 +61,34 @@ const SupportLayout = () => {
         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     };
 
+    const handleMouseLeave = (e) => {
+        const container = containerRef.current;
+        const rect = container.getBoundingClientRect();
+        if (e.clientY >= rect.bottom) {
+            gsap.to(container, {
+                duration: 0.2,
+                opacity: 0,
+                onComplete: () => {
+                    setHoveredItem(null);
+                    gsap.to(container, { opacity: 1 });
+                }
+            });
+        }
+    };
+    useEffect(() => {
+        const containerElement = containerRef.current;
+        if (containerElement) {
+            containerElement.addEventListener('mouseleave', handleMouseLeave);
+        }
+        return () => {
+            if (containerElement) {
+                containerElement.removeEventListener('mouseleave', handleMouseLeave);
+            }
+        };
+    }, []);
+
     return (
-        <div className="wrapper rounded-lg bg-white w-full mx-auto relative h-auto flex items-center justify-center p-14">
+        <div ref={containerRef} className="wrapper rounded-lg bg-white w-full mx-auto relative h-auto flex items-center justify-center p-14">
             <button
                 onClick={() => handleArrowClick('left')} className="absolute z-10 left-0 p-0 text-4xl ml-2 h-10 w-10 border-2 rounded-full overflow-hidden bg-white text-black transition-all before:absolute before:bottom-0 before:right-0 before:top-0 before:z-0 before:w-0 before:bg-black before:transition-all before:duration-75 hover:text-white hover:before:left-0 hover:before:w-full"
             >

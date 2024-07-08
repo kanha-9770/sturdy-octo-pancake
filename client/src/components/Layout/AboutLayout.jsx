@@ -81,13 +81,13 @@ const AboutLayout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, i
             <div className="grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-4 flex-shrink image-container">
                 {titlesWithImages.map((item, index) => (
                     <div key={index} className="flex p-2 mt-4 flex-col items-center">
-                       <Link to={`${item.title}`}>
-                       <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-golden-w h-golden-h rounded-2xl cursor-pointer"
-                        />
-                        <p className="mt-2 text-center text-sm font-semibold">{item.title}</p></Link>
+                        <Link to={`${item.title}`}>
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-golden-w h-golden-h rounded-2xl cursor-pointer"
+                            />
+                            <p className="mt-2 text-center text-sm font-semibold">{item.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -96,16 +96,16 @@ const AboutLayout = ({ hoveredItem, setHoveredItem, open, heading, setHeading, i
                 <div className="">
                     <div ref={carouselRef}>
                         {items.slice(currentIndex, currentIndex + 2).map((item, index) => (
-                            <Link to={`${item.title}`}>
-                             <div key={index} className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}>
-                                <div className="h-12 w-12 mr-3 flex justify-center items-center text-2xl">
-                                    <item.icon></item.icon>
+                            <Link key={index} to={`${item.title}`}>
+                                <div className={`${item.color} flex items-center p-4 rounded-3xl mb-2`}>
+                                    <div className="h-12 w-12 mr-3 flex justify-center items-center text-2xl">
+                                        <item.icon></item.icon>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-md font-medium mb-0">{item.title}</h3>
+                                        <p className="text-xs line-clamp-3">{item.description}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 className="text-md font-medium mb-0">{item.title}</h3>
-                                    <p className="text-xs line-clamp-3">{item.description}</p>
-                                </div>
-                            </div>
                             </Link>
                         ))}
                     </div>
