@@ -124,7 +124,7 @@ const ContactForm = ({ isContactFormVisible, setContactFormVisible, isVisible, s
                 Contact
             </span>
             {isContactFormVisible && (
-                <div ref={contactRef} className="fixed inset-0 flex justify-end items-start md:pt-16 2xl:pt-16 mr-6">
+                <div ref={contactRef} className="fixed inset-0 flex justify-end items-start md:pt-14 2xl:pt-16 mr-6">
                     <form
                         ref={formRef}
                         className="bg-white p-6 rounded-xl shadow-lg w-full max-w-lg"

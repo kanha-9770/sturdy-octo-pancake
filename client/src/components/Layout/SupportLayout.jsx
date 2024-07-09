@@ -53,14 +53,12 @@ const SupportLayout = ({ setHoveredItem }) => {
             carousel.removeEventListener('scroll', handleScroll);
         };
     }, [cardCount]);
-
     const handleArrowClick = (direction) => {
         const carousel = carouselRef.current;
         if (!carousel) return;
         const scrollAmount = direction === 'left' ? -firstCardWidth.current : firstCardWidth.current;
         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     };
-
     const handleMouseLeave = (e) => {
         const container = containerRef.current;
         const rect = container.getBoundingClientRect();

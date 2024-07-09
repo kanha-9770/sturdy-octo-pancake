@@ -17,7 +17,7 @@ function App() {
       onMouseEnter={handleMouseLeave}
     >
       <Navbar hoveredItem={hoveredItem} setHoveredItem={setHoveredItem} heading={heading} setHeading={setHeading} />
-      {/* <Home/> */}
+      <Home />
     </BrowserRouter>
   )
 }
