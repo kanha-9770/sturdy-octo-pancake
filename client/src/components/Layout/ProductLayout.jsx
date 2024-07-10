@@ -1,20 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
-import { Machines, SidebarLinks, images } from '../../constants';
+import { Machines, SidebarLinks } from '../../constants';
 import me from "../../assets/BgForAbout.png";
 
 const ProductLayout = ({ setHoveredItem, setHeading, setIsVisible }) => {
   const [hoveredCategory, setHoveredCategory] = useState('All Products');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [filteredMachines, setFilteredMachines] = useState([]);
   const containerRef = useRef(null);
 
-  const filteredMachines = Machines
-    .filter((machine) => machine.category.includes(hoveredCategory))
-    .map((machine) => ({
-      ...machine,
-      image: images[machine.image],
-    }));
+  const loadImage = async (imageLoader) => {
+    const image = await imageLoader();
+    return image;
+  };
+
+  const updateFilteredMachines = async () => {
+    const machines = await Promise.all(
+      Machines.filter((machine) => machine.category.includes(hoveredCategory))
+        .map(async (machine) => ({
+          ...machine,
+          image: await loadImage(machine.image),
+        }))
+    );
+    setFilteredMachines(machines);
+  };
+
+  useEffect(() => {
+    updateFilteredMachines();
+  }, [hoveredCategory]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredMachines.length);
@@ -98,8 +112,6 @@ const ProductLayout = ({ setHoveredItem, setHeading, setIsVisible }) => {
               [...filteredMachines, ...filteredMachines].slice(currentIndex, currentIndex + 3).map((machine, index) => (
                 <div key={`${machine.name}-${index}`} className="pt-0 text-center w-1/3 relative">
                   <img
-
-
                     src={machine.image}
                     alt={machine.name}
                     className={`object-scale-down relative z-10 transition-transform duration-700 ${index === 1 ? 'zoomed-image w-[400px] h-[200px] p-2' : 'h-[200px] w-full p-6'}`}

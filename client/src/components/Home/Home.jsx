@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import Carousel from './Carousel';
+import "@fontsource/alex-brush";
+
+// Memoized Navbar Link Component
+const NavLink = memo(({ href, text, index, activeLink, handleMouseEnter, handleMouseLeave }) => (
+    <a
+        href={href}
+        className={`text-gray-600 hover:text-black ${activeLink === index && 'border-b-2 border-red-600'}`}
+        onMouseEnter={() => handleMouseEnter(index)}
+        onMouseLeave={handleMouseLeave}
+    >
+        {text}
+    </a>
+));
+
 const Home = () => {
     const [activeLink, setActiveLink] = useState(0); // State to track active link, -1 means none
-    const handleMouseEnter = (index) => {
-        setActiveLink(index);
-    };
 
-    const handleMouseLeave = () => {
+    // Memoized event handlers
+    const handleMouseEnter = useCallback((index) => {
+        setActiveLink(index);
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
         setActiveLink(-1); // Reset activeLink when mouse leaves all links
-    };
+    }, []);
 
     return (
-        <div className="relative top-6 flex flex-col items-center bg-[#f5f5f5] rounded-lg  overflow-hidden max-w-full">
-            <div className="relative p-10 w-full">
+        <div className="relative top-6 flex flex-col items-center bg-[#f5f5f5] rounded-lg overflow-hidden max-w-full">
+            <div className="relative p-10 px-12 w-full">
                 <video
                     id="background-video"
                     className="w-full h-[25rem] object-cover rounded-2xl"
@@ -33,74 +49,71 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            <div className="flex mt-[-1.5rem] px-8 w-full">
-                <div className=" w-full flex flex-row">
+            <div className="flex mt-[-1.5rem] px-10 w-full">
+                <div className="w-full flex flex-row">
                     <div className="w-2/5 flex flex-col">
-                        <h2 className="text-4xl font-montserrat font-thin">FOOD PACKING MACHINES</h2>
-                        <h3 className="text-6xl font-montserrat
-                     italic">𝓂𝒶𝓃𝓊𝒻𝒶𝒸𝓉𝓊𝓇𝒾𝓃𝑔</h3>
+                        <h2 className="text-4xl font-poppins font-extralight">FOOD PACKING MACHINES</h2>
+                        <h3 className="text-6xl py-4 font-alex-brush">Manufacturing</h3>
                         <div className="flex justify-start w-full">
-                            <nav className="flex space-x-4 px-4 py-2">
-                                <a
+                            <nav className="flex space-x-4 px-4 py-0">
+                                <NavLink
                                     href="#machines"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 0 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(0)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    Machines
-                                </a>
-                                <a
+                                    text="Machines"
+                                    index={0}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
+                                <NavLink
                                     href="#about-us"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 1 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(1)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    About Us
-                                </a>
-                                <a
+                                    text="About Us"
+                                    index={1}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
+                                <NavLink
                                     href="#news"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 2 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(2)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    News
-                                </a>
-                                <a
+                                    text="News"
+                                    index={2}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
+                                <NavLink
                                     href="#brands"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 3 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(3)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    Brands
-                                </a>
-                                <a
+                                    text="Brands"
+                                    index={3}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
+                                <NavLink
                                     href="#clientele"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 4 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(4)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    Clientele
-                                </a>
-                                <a
+                                    text="Clientele"
+                                    index={4}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
+                                <NavLink
                                     href="#testimonials"
-                                    className={`text-gray-600 hover:text-black ${activeLink === 5 && 'border-b-2 border-red-600'}`}
-                                    onMouseEnter={() => handleMouseEnter(5)}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    Testimonials
-                                </a>
+                                    text="Testimonials"
+                                    index={5}
+                                    activeLink={activeLink}
+                                    handleMouseEnter={handleMouseEnter}
+                                    handleMouseLeave={handleMouseLeave}
+                                />
                             </nav>
                         </div>
                     </div>
-                    <div className="flex justify-end flex-col w-3/5">
+                    <div className="flex mt-[-6.5rem] justify-end flex-col w-3/5">
                         <Carousel />
                     </div>
-
                 </div>
             </div>
-
         </div>
     );
 };
 
-export default Home;
+export default memo(Home);

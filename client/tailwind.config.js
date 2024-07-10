@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
+        'alex-brush': ['Alex Brush', 'cursive'],
       },
       fontSize: {
         16: "16px",

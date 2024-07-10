@@ -64,7 +64,7 @@ export const titlesWithImages = [
 // links for navbar
 export const links = [
   {
-    name: "AboutUs",
+    name: "About Us",
     comp: "AboutUs",
   },
   {
@@ -79,8 +79,12 @@ export const links = [
   {
     name: "Support",
   },
+
   {
-    name: "Databank",
+    name: "Resources",
+  },
+  {
+    name: "Videos",
   },
 ];
 // images for about us

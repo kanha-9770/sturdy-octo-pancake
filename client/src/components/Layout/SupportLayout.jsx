@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import './Layout.css';
 import { supporItem } from '../../constants';
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from '../index';
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 import { BgMapImage } from '../../assets';
 import { gsap } from 'gsap';
 
@@ -10,14 +10,13 @@ const SupportLayout = ({ setHoveredItem }) => {
     const containerRef = useRef(null);
     const firstCardWidth = useRef(0);
     const cardCount = supporItem.length;
+
     useEffect(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;
 
         const initializeCarousel = () => {
             firstCardWidth.current = carousel.querySelector('.card').offsetWidth;
-
-            // Duplicate the items at the beginning and end for infinite effect
             const carouselChildren = [...carousel.children];
             carouselChildren.slice(-cardCount).reverse().forEach((card) => {
                 carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
@@ -53,12 +52,14 @@ const SupportLayout = ({ setHoveredItem }) => {
             carousel.removeEventListener('scroll', handleScroll);
         };
     }, [cardCount]);
+
     const handleArrowClick = (direction) => {
         const carousel = carouselRef.current;
         if (!carousel) return;
         const scrollAmount = direction === 'left' ? -firstCardWidth.current : firstCardWidth.current;
         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     };
+
     const handleMouseLeave = (e) => {
         const container = containerRef.current;
         const rect = container.getBoundingClientRect();
@@ -73,6 +74,7 @@ const SupportLayout = ({ setHoveredItem }) => {
             });
         }
     };
+
     useEffect(() => {
         const containerElement = containerRef.current;
         if (containerElement) {

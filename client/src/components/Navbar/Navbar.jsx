@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FiMenu, FiX, Link, motion, MdOutlineAccountCircle, NavLinks, ContactForm } from "../index";
-import Logo from "../../assets/Logo.png";
-import CountryLayout from "../Layout/CountryLayout";
-import SearchBarLayout from "../Layout/SearchBarLayout";
-import AccountLayout from "../Layout/AccountLayout";
-import ProfileLayout from "../Layout/ProfileLayout";
+import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { MdOutlineAccountCircle } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/Logo.png';
+import CountryLayout from '../Layout/CountryLayout';
+import SearchBarLayout from '../Layout/SearchBarLayout';
+import AccountLayout from '../Layout/AccountLayout';
+import ProfileLayout from '../Layout/ProfileLayout';
+import NavLinks from './NavLinks';
+import ContactForm from '../Contact/Contact';
 
-const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
+const Navbar = memo(({ hoveredItem, setHoveredItem, heading, setHeading }) => {
     const [open, setOpen] = useState(false);
     const [isFlagOpen, setIsFlagOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
@@ -16,51 +21,37 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
     const [isVisible, setIsVisible] = useState(true);
     const accountRef = useRef(null);
 
-    const toggleMenu = () => {
-        setOpen(!open);
-    };
-
-    const handleMouseLeave = () => {
+    const toggleMenu = useCallback(() => setOpen((prev) => !prev), []);
+    
+    const handleMouseLeave = useCallback(() => {
         setHoveredItem(null);
         setHeading(null);
         setIsVisible(true);
-    };
+    }, [setHoveredItem, setHeading, setIsVisible]);
 
-    const handleAccount = () => {
+    const handleAccount = useCallback(() => {
         setIsFlagOpen(false);
         setProfileOpen(false);
         setOpenSearch(false);
-        setAccountOpen(!accountOpen);
-    };
+        setAccountOpen((prev) => !prev);
+    }, []);
 
-    const handleClickOutside = (event) => {
+    const handleClickOutside = useCallback((event) => {
         if (accountRef.current && !accountRef.current.contains(event.target)) {
             setAccountOpen(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [handleClickOutside]);
 
     useEffect(() => {
-        if (isFlagOpen || openSearch || profileOpen || accountOpen) {
-            setIsVisible(false);
-        } else {
-            setIsVisible(true);
-        }
+        setIsVisible(!(isFlagOpen || openSearch || profileOpen || accountOpen));
     }, [isFlagOpen, openSearch, profileOpen, accountOpen]);
-
-    useEffect(() => {
-        console.log('isFlagOpen:', isFlagOpen);
-        console.log('openSearch:', openSearch);
-        console.log('profileOpen:', profileOpen);
-        console.log('accountOpen:', accountOpen);
-        console.log('isVisible:', isVisible);
-    }, [isFlagOpen, openSearch, profileOpen, accountOpen, isVisible]);
 
     return (
         <motion.nav
@@ -75,16 +66,16 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
                 </span>
                 <Link
                     onMouseEnter={handleMouseLeave}
-                    to={"/"}
-                    className="w-1/4 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
+                    to="/"
+                    className="w-1/5 z-30 hidden h-10 rounded-2xl md:flex md:pr-1 pr-2 justify-start items-center"
                 >
                     <img
-                        className={`z-30 ${hoveredItem ? "h-6" : "h-6"} w-16`}
+                        className={`z-30 ${hoveredItem ? "h-6" : "h-6"} w-auto`}
                         src={Logo}
                         alt="Logo"
                     />
                 </Link>
-                <ul className="w-2/4 h-10 flex-wrap bg-white rounded-3xl md:flex hidden justify-center items-center font-montserrat text-16 font-thin relative">
+                <ul className="w-[55%] h-10 flex-wrap bg-white rounded-3xl md:flex hidden justify-center items-center font-montserrat text-16 font-thin relative">
                     <NavLinks
                         hoveredItem={hoveredItem}
                         setHoveredItem={setHoveredItem}
@@ -96,7 +87,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
                 </ul>
                 <span
                     onMouseEnter={handleMouseLeave}
-                    className={`w-1/4 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"}`}
+                    className={`w-1/5 h-10 z-30 hidden md:flex justify-end items-center gap-2 ${hoveredItem ? "text-black" : "text-black"}`}
                 >
                     <div className="flex items-center justify-center space-x-1">
                         <CountryLayout
@@ -117,7 +108,7 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
                             setAccountOpen={setAccountOpen}
                         />
                     </div>
-                    <div className="flex items-center justify-center skew-x-1">
+                    <div className="flex items-center justify-center space-x-1">
                         <ProfileLayout
                             profileOpen={profileOpen}
                             setIsFlagOpen={setIsFlagOpen}
@@ -172,6 +163,6 @@ const Navbar = ({ hoveredItem, setHoveredItem, heading, setHeading }) => {
             )}
         </motion.nav>
     );
-};
+});
 
 export default Navbar;
